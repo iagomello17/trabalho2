@@ -1,5 +1,5 @@
 
-pecas_disponiveis = [("Peça 1", 10.0), ("Peça 2", 15.0), ("Peça 3", 20.0)]
+pecas_disponiveis = [("Troca de oleo", 250.0), ("Bateria 60PD", 334.0), ("PNEU 165/60 r13", 434.0),("Correia", 50.0)]
 
 lista_vendas = []
 
