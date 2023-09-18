@@ -20,7 +20,7 @@ def realizar_venda():
         quantidade = int(input(f"Quantidade de '{pecas_disponiveis[escolha - 1][0]}': "))
         if quantidade > 0:
             lista_vendas.append((pecas_disponiveis[escolha - 1][0], quantidade, pecas_disponiveis[escolha - 1][1]))
-            print(f"{quantidade} '{pecas_disponiveis[escolha - 1][0]}'(s) adicionado(s) ao carrinho.")
+            print(f"{quantidade} '{pecas_disponiveis[escolha - 1][0]}'(s) adicionado(s) ao carrinho./n")
             realizar_venda() 
         else:
             print("Quantidade inválida. Tente novamente.")
@@ -30,7 +30,7 @@ def remover_item():
         print("Nenhum item no carrinho para remover.")
         return
 
-    print("Itens no Carrinho:")
+    print("/nItens no Carrinho:")
     for i, (peca, quantidade, preco) in enumerate(lista_vendas, start=1):
         print(f"{i}. {peca} - Quantidade: {quantidade} - Preço unitário: R${preco:.2f}")
 
