@@ -1,5 +1,5 @@
-
 pecas_disponiveis = [("Troca de oleo", 250.0), ("Bateria 60PD", 334.0), ("PNEU 165/60 r13", 434.0),("Correia", 50.0)]
+
 
 lista_vendas = []
 
@@ -21,8 +21,29 @@ def realizar_venda():
         if quantidade > 0:
             lista_vendas.append((pecas_disponiveis[escolha - 1][0], quantidade, pecas_disponiveis[escolha - 1][1]))
             print(f"{quantidade} '{pecas_disponiveis[escolha - 1][0]}'(s) adicionado(s) ao carrinho.")
+            realizar_venda() 
         else:
             print("Quantidade inválida. Tente novamente.")
+
+def remover_item():
+    if not lista_vendas:
+        print("Nenhum item no carrinho para remover.")
+        return
+
+    print("Itens no Carrinho:")
+    for i, (peca, quantidade, preco) in enumerate(lista_vendas, start=1):
+        print(f"{i}. {peca} - Quantidade: {quantidade} - Preço unitário: R${preco:.2f}")
+
+    escolha = int(input("Digite o número do item que deseja remover (ou 0 para sair): "))
+    
+    if escolha == 0:
+        return
+    elif escolha < 1 or escolha > len(lista_vendas):
+        print("Escolha inválida. Tente novamente.")
+    else:
+        item_removido = lista_vendas.pop(escolha - 1)
+        print(f"'{item_removido[0]}' removido do carrinho.")
+
 
 def calcular_total():
     total = sum(preco * quantidade for _, quantidade, preco in lista_vendas)
@@ -55,7 +76,8 @@ def main():
         print("\nMenu:")
         print("1. Realizar Venda")
         print("2. Concluir Venda")
-        print("3. Sair")
+        print("3. Remover Item do Carrinho")
+        print("4. Sair")
         
         escolha = int(input("Escolha uma opção: "))
         
@@ -64,8 +86,10 @@ def main():
         elif escolha == 2:
             concluir_venda()
         elif escolha == 3:
-            print("Saindo do programa.")
-            break
+            remover_item()
+        elif escolha == 4:
+              print("Saindo do programa.")
+              break
         else:
             print("Opção inválida. Tente novamente.")
 
