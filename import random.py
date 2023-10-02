@@ -76,32 +76,3 @@ def copArquivo(velhoArquivo, novoArquivo):
 copArquivo("arquivonomes.txt", "novo,txt")
 '''
 #EXERCICIO 4
-
-def calcular_media(notas):
-    notas = notas.split()
-    notas = [float(nota) for nota in notas]
-    return sum(notas) / len(notas)
-
-def gerar_relatorio(arquivo_alunos, arquivo_notas, arquivo_saida):
-    with open(arquivo_alunos, 'r') as alunos_file, open(arquivo_notas, 'r') as notas_file, open(arquivo_saida, 'w') as saida_file:
-        alunos = alunos_file.readlines()
-        notas = notas_file.readlines()
-
-        if len(alunos) != len(notas):
-            print("Erro: número de alunos e notas não corresponde.")
-            return
-
-        for i in range(len(alunos)):
-            aluno = alunos[i].strip()
-            notas_aluno = notas[i].strip()
-            media = calcular_media(notas_aluno)
-            saida_file.write(f"{aluno}: {media:.2f}\n")
-
-if __name__ == "__main__":
-    arquivo_alunos = "alunos.txt"  # Substitua pelo nome do seu arquivo de alunos
-    arquivo_notas = "notas.txt"  # Substitua pelo nome do seu arquivo de notas
-    arquivo_saida = "relatorio.txt"  # Nome do arquivo de saída para o relatório
-
-    gerar_relatorio(arquivo_alunos, arquivo_notas, arquivo_saida)
-
-
